@@ -17,14 +17,39 @@ class ProfileRepoClass extends Component {
     // console.log("ProfileRepoClass child constructor");
   }
 
+  fetchAllRepositories = async () => {
+    const repos = [];
+    let page = 1;
+    let shouldFetchMore = true;
+
+    while (shouldFetchMore) {
+      const response = await fetch(
+        `${Github_API_User}${Github_UserName}/repos?per_page=30&page=${page}`,
+        options
+      );
+      const data = await response.json();
+
+      repos.push(...data);
+
+      if (data.length < 30) {
+        shouldFetchMore = false;
+      } else {
+        page += 1;
+      }
+    }
+
+    return repos;
+  };
+
   async componentDidMount() {
-    const response = await fetch(
-      Github_API_User + Github_UserName + "/repos",
-      options
-    );
-    const json = await response.json();
+    // const response = await fetch(
+    //   Github_API_User + Github_UserName + "/repos",
+    //   options
+    // );
+    const response = await this.fetchAllRepositories();
+    console.log(response);
     this.setState({
-      repoInfo: json,
+      repoInfo: response,
     });
     // console.log("ProfileRepoClass child componentDidMount");
   }
@@ -46,24 +71,42 @@ class ProfileRepoClass extends Component {
             return (
               <div key={repo.id} className="profile-repo">
                 <h1>
-                  <a href={repo.html_url} target="_blank" rel='noopener noreferrer'>{repo.name}</a>
+                  <a
+                    href={repo.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {repo.name}
+                  </a>
                 </h1>
                 <h3 className="repo-des">{repo.description}</h3>
                 <div className="profile-repo-items">
                   <h3>
-                    <a href={html_url} target="_blank" rel='noopener noreferrer'>
+                    <a
+                      href={html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FiUsers />
                       <span>{followers} Followers</span>
                     </a>
                   </h3>
                   <h3>
-                    <a href={repo.html_url} target="_blank" rel='noopener noreferrer'>
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <BiGitRepoForked />
                       <span>{repo.forks_count} Forks</span>
                     </a>
                   </h3>
                   <h3>
-                    <a href={repo.html_url} target="_blank" rel='noopener noreferrer'>
+                    <a
+                      href={repo.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <BiStar />
                       <span>{repo.stargazers_count} Stars</span>
                     </a>

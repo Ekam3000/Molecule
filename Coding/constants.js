@@ -3,13 +3,16 @@ export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
 // Image CDN URL for Restaurant Menu
-export const ITEM_IMG_CDN_URL ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+export const ITEM_IMG_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
 
 // Swiggy API to get Restaurant data with foodfire server
-export const swiggy_api_URL = "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+export const swiggy_api_URL =
+  "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
 
 // Swiggy API to get Restaurant Menu data with foodfire server
-export const swiggy_menu_api_URL ="https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
+export const swiggy_menu_api_URL =
+  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
 
 // shimmer card unit
 export const shimmer_card_unit = 20;
@@ -19,8 +22,7 @@ export const shimmer_menu_card_unit = 4;
 
 // Github - username
 export const Github_UserName = "Ekam3000";
-export const Github_Repository_Name = "Namaste-React";
-
+export const Github_Repository_Name = "Molecule";
 // Github API for User
 export const Github_API_User = "https://api.github.com/users/";
 
